@@ -1,0 +1,31 @@
+version: "3.0"
+
+services:
+  app:
+    image: 1science/sbt:0.13.8-oracle-jre-8
+    build: .
+    depends_on:
+      - postgres
+    working_dir: /app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app
+    stdin_open: true
+    tty: true
+    command: ["sbt", "run"]
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: films-reviews
+
+volumes:
+  postgres-data:
