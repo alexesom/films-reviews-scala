@@ -3,16 +3,16 @@ package models
 import slick.jdbc.PostgresProfile.api._
 
 case class Genre(
-                  id: Option[Long] = Some(0),
-                  genre: String
+                  id: Long = 0,
+                  name: String
                 )
 
 class GenresTable(tag: Tag) extends Table[Genre](tag, "genres") {
-  def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
+  def id = column[Long]("id", O.PrimaryKey, O.AutoInc)
 
-  def genre = column[String]("genre", O.Unique)
+  def name = column[String]("name", O.Unique)
 
-  def * = (id, genre) <> (Genre.tupled, Genre.unapply)
+  def * = (id, name) <> (Genre.tupled, Genre.unapply)
 }
 
 object GenresTable {

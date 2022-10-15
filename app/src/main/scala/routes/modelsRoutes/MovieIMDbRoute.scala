@@ -1,4 +1,4 @@
-package routes
+package routes.modelsRoutes
 
 import akka.http.scaladsl.model.{ContentTypes, HttpEntity, StatusCode}
 import akka.http.scaladsl.server.Directives.{complete, onComplete, onSuccess}

@@ -7,7 +7,7 @@ import services.MovieService.sendRequest
 import scala.concurrent.Future
 
 object GenreIMDbService extends StrictLogging {
-  def getGenreIMDbArrayJson(genresLanguage: String): Future[String] = {
+  def getGenresJson(genresLanguage: String): Future[String] = {
     import implicits.Configuration._
 
     logger.debug(s"Starting building of TMDb Uri")
